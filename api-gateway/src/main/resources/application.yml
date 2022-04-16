@@ -9,10 +9,13 @@ spring:
     gateway:
       routes:
         - id : candidate-service
-          #uri: http://localhost:8080
           uri: lb://candidate-service
           predicates:
             - Path=/candidates/**
+        - id: node-service
+          uri: lb://node-service
+          predicates:
+            - Path=/api/**
 
 eureka:
   instance:
