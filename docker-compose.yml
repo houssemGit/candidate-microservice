@@ -12,6 +12,8 @@ services:
     image: "candidate-service"
     depends_on:
       - Eureka
+    volumes:
+      - /tmp:/tmp
 
   Gateway:
     container_name: api-gateway
@@ -57,4 +59,3 @@ services:
     hostname: Mongo
     depends_on:
       - "Eureka"
-
