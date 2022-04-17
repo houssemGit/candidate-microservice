@@ -1,20 +1,32 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const eurekaHelper = require('./eureka-helper');
 const bodyParser = require('body-parser');
 const cors = require("cors");
+const morgan = require("morgan")
 const mongoose = require("mongoose")
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(morgan(function (tokens, req, res) {
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+}))
 app.use(bodyParser.json());
 app.use(cors());
-app.use(require('./routes/index'));
-
 app.get('/', (req, res) => {
   res.json("I am user-service")
  })
+app.use(require('./routes/index'));
+
+
 
 app.listen(PORT, () => {
   console.log(`user-service on ${PORT}`);
@@ -26,4 +38,4 @@ app.listen(PORT, () => {
 })
 
 
-//eurekaHelper.registerWithEureka('user-service', PORT);
+eurekaHelper.registerWithEureka('node-service', PORT);

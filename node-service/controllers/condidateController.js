@@ -23,7 +23,12 @@ class condidateController {
               })
         }
 
-        await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})            
+        await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})
+        try{
+        await axios.post("http://localhost:8054/candidates",candidate_data)
+        }catch(err){
+            console.log(err)
+        }            
         return res.json({status:"done",candidate_data})
     }
 
