@@ -12,15 +12,13 @@ services:
     image: "candidate-service"
     depends_on:
       - Eureka
-    volumes:
-      - /tmp:/tmp
 
   Gateway:
     container_name: api-gateway
     build: ./api-gateway
     ports:
       - "8054:8054"
-    hostname: candidate
+    hostname: api-gateway
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     image: "api-gateway"
