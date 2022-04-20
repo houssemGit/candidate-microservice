@@ -25,6 +25,18 @@ services:
     depends_on:
       - Eureka
 
+  Auth:
+    container_name: auth-service
+    build: ./auth-service
+    ports:
+      - "8081:8081"
+    hostname: auth
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    image: "auth-service"
+    depends_on:
+      - Eureka
+
   Gateway:
     container_name: api-gateway
     build: ./api-gateway
