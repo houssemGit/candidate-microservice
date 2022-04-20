@@ -23,7 +23,8 @@ class condidateController {
               })
         }
 
-        await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})
+        const created_data = await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})
+        candidate_data._id = created_data._id
         try{
         await axios.post("http://localhost:8054/candidates",candidate_data)
         }catch(err){
@@ -35,6 +36,20 @@ class condidateController {
     async downloadFile(req,res){
         const file = `./uploads/${req.params.name}`;
         return res.download(file);
+    }
+
+    async updateData(req,res){
+        const payload = req.body
+        const _id = req.body._id
+        delete payload._id
+        const updatedData = await cv.findOneAndUpdate({_id},{raw_data:payload},{new:true})
+        return res.json({success:true,updatedData})
+    }
+
+    async deleteData(req,res){
+        const {_id} = req.body
+        await cv.deleteOne({_id})
+        return res.json({success:true})
     }
 }
 

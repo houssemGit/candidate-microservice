@@ -38,4 +38,4 @@ app.listen(PORT, () => {
 })
 
 
-eurekaHelper.registerWithEureka('node-service', PORT);
+//eurekaHelper.registerWithEureka('node-service', PORT);
