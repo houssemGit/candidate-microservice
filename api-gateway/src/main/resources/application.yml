@@ -12,6 +12,10 @@ spring:
           uri: lb://candidate-service
           predicates:
             - Path=/candidates/**
+        - id : evaluation-service
+          uri: lb://evaluation-service
+          predicates:
+            - Path=/evaluation/**
         - id: node-service
           uri: lb://node-service
           predicates:

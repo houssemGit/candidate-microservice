@@ -13,6 +13,18 @@ services:
     depends_on:
       - Eureka
 
+  Evaluation:
+    container_name: evaluation-service
+    build: ./evaluation-service
+    ports:
+      - "8085:8085"
+    hostname: evaluation
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    image: "evaluation-service"
+    depends_on:
+      - Eureka
+
   Gateway:
     container_name: api-gateway
     build: ./api-gateway
