@@ -30,7 +30,7 @@ services:
     image: "node-service"
     build: ./node-service
     ports:
-      - "5000:5000"
+      - "3000:3000"
     hostname: node-service
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=eureka-server

@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="candidate-service" />
         <module name="eureka-server" />
+        <module name="candidature-service" />
         <module name="api-gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway" target="11" />
       <module name="candidate-service" target="11" />
+      <module name="candidature-service" target="11" />
       <module name="cart-service" target="11" />
       <module name="eureka-server" target="11" />
     </bytecodeTargetLevel>
@@ -23,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="candidate-service" options="-parameters" />
+      <module name="candidature-service" options="-parameters" />
       <module name="cart-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
     </option>
