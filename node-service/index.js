@@ -1,14 +1,24 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const eurekaHelper = require('./eureka-helper');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const morgan = require("morgan")
 const mongoose = require("mongoose")
+
+const swaggerUi = require("swagger-ui-express"),
+swaggerDocument = require("./swagger.json");
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
+
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
 
 app.use(morgan(function (tokens, req, res) {
   return [
