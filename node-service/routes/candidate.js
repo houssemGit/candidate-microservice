@@ -23,5 +23,11 @@ router.post("/uploadCV",upload.single('cv'),(req,res)=>{
 router.get("/download/:name",(req,res)=>{
     candidateControllerInst.downloadFile(req,res)
 })
+router.put("/update",(req,res)=>{
+    candidateControllerInst.updateData(req,res)
+})
+router.delete("/delete",(req,res)=>{
+    candidateControllerInst.deleteData(req,res)
+})
 
 module.exports = router;
