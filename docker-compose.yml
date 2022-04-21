@@ -81,3 +81,16 @@ services:
     hostname: Mongo
     depends_on:
       - "Eureka"
+
+
+  Employee:
+    container_name: employee-service
+    build: ./employee-service
+    ports:
+      - "8085:8085"
+    hostname: employee
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    image: "employee-service"
+    depends_on:
+      - Eureka

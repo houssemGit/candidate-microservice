@@ -20,6 +20,10 @@ spring:
           uri: lb://node-service
           predicates:
             - Path=/api/**
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee/**
 
 eureka:
   instance:
