@@ -1,6 +1,5 @@
 version: "2.2"
 services:
-
   Candidate:
     container_name: candidate-service
     build: ./candidate-service
@@ -27,9 +26,21 @@ services:
     depends_on:
       - Eureka
 
+  Employee:
+    container_name: employee-service
+    build: ./employee-service
+    ports:
+      - "8087:8087"
+    hostname: employee
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    image: "employee-service"
+    depends_on:
+      - Eureka
+
   Evaluation:
     container_name: evaluation-service
-    build: ./evaluation-service
+    build: ./evalulation-service
     ports:
       - "8085:8085"
     hostname: evaluation
