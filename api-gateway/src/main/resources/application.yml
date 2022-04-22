@@ -1,18 +1,17 @@
 server:
   port: 8054
 
-
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
       routes:
-        - id : candidate-service
+        - id: candidate-service
           uri: lb://candidate-service
           predicates:
             - Path=/candidates/**
-        - id : evaluation-service
+        - id: evaluation-service
           uri: lb://evaluation-service
           predicates:
             - Path=/evaluation/**
@@ -23,7 +22,7 @@ spring:
         - id: employee-service
           uri: lb://employee-service
           predicates:
-            - Path=/employee/**
+            - Path=/employees/**
 
 eureka:
   instance:
