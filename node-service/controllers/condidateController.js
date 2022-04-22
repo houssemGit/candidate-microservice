@@ -9,9 +9,9 @@ class condidateController {
         console.log(req.file.filename)
         let api_result = null
         let candidate_data;
-        /*api_result = await axios.get(`https://api.apilayer.com/resume_parser/url?url=http://63a0-197-15-20-142.ngrok.io/api/candidate/download/Houssem_ZeraiCV.pdf`,{
+        /*api_result = await axios.get(`https://api.apilayer.com/resume_parser/url?url=http://fff0-41-225-140-80.ngrok.io/api/candidate/download/${req.file.filename}`,{
             headers:{
-                "apikey":"OPi2GRLDsT0ON3bDMxpb2eJdttpHRpz1"
+                "apikey":"gNoCFMNQBfLqUGoDtODxxbBX3qj2sMwM"
             },
         })*/
         if (api_result)
