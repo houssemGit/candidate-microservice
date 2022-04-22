@@ -54,7 +54,7 @@ services:
     container_name: offre-service
     build: ./offre-service
     ports:
-      - "8085:8085"
+      - "8086:8086"
     hostname: offre
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
@@ -116,7 +116,7 @@ services:
       image: "mongo:5-focal"
       ports:
         - "27017:27017"
-      hostname: Mongo
+      hostname: mongodb
       depends_on:
         - "Eureka"
 
