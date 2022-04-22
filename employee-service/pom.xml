@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.esprit</groupId>
-    <artifactId>evaluation-service</artifactId>
+    <artifactId>employee-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>evaluation-service</name>
-    <description>evaluation microservice</description>
+    <name>employee-service</name>
+    <description>employee microservice</description>
     <properties>
         <java.version>11</java.version>
     </properties>

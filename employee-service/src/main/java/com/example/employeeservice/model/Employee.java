@@ -21,10 +21,8 @@ public class Employee implements Serializable {
     private String lastName;
     private String email;
     private String profession;
-
-    public Employee(String nom){
-        this.firstName = nom;
-    }
+    private String salary;
+    private String departement;
 
     public UUID getId() {
         return id;
@@ -64,5 +62,21 @@ public class Employee implements Serializable {
 
     public void setProfession(String profession) {
         this.profession = profession;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
     }
 }
