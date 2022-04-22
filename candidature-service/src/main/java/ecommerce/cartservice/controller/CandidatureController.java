@@ -32,7 +32,7 @@ public class CandidatureController {
     }
 
     @GetMapping(value ="/{id}")
-    public ResponseEntity<Candidature> getCandidatureById(@PathVariable("id") String id) {
+    public ResponseEntity<Candidature> getCandidatureById(@PathVariable("id") UUID id) {
         Optional<Candidature> candidate = this.candidatureService.getCandidatureById(id);
         if (candidate.isPresent()) {
             return new ResponseEntity<>(candidate.get(), HttpStatus.OK);
@@ -49,7 +49,7 @@ public class CandidatureController {
     }
 
     @PutMapping(value ="/{id}")
-    public ResponseEntity<Candidature> updateCandidature(@PathVariable("id") String id, @RequestBody Candidature candidatureDto) {
+    public ResponseEntity<Candidature> updateCandidature(@PathVariable("id") UUID id, @RequestBody Candidature candidatureDto) {
         try {
             return new ResponseEntity<>(this.candidatureService.updateCandidature(candidatureDto, id), HttpStatus.OK);
         }catch (CandidatureNotFoundException e){
@@ -58,7 +58,7 @@ public class CandidatureController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCandidature(@PathVariable("id") String id) {
+    public ResponseEntity<HttpStatus> deleteCandidature(@PathVariable("id") UUID id) {
         try {
             this.candidatureService.deleteCandidature(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

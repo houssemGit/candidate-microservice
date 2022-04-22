@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/candidates")
@@ -32,7 +31,7 @@ public class CandidateController {
     }
 
     @GetMapping(value ="/{id}")
-    public ResponseEntity<Candidate> getCandidateById(@PathVariable("id") UUID id) {
+    public ResponseEntity<Candidate> getCandidateById(@PathVariable("id") String id) {
         Optional<Candidate> candidate = this.candidateService.getCandidateById(id);
         if (candidate.isPresent()) {
             return new ResponseEntity<>(candidate.get(), HttpStatus.OK);
@@ -49,7 +48,7 @@ public class CandidateController {
     }
 
     @PutMapping(value ="/{id}")
-    public ResponseEntity<Candidate> updateCandidate(@PathVariable("id") UUID id, @RequestBody Candidate candidateDto) {
+    public ResponseEntity<Candidate> updateCandidate(@PathVariable("id") String id, @RequestBody Candidate candidateDto) {
         try {
             return new ResponseEntity<>(this.candidateService.updateCandidate(candidateDto, id), HttpStatus.OK);
         }catch (CandidateNotFoundException e){
@@ -58,7 +57,7 @@ public class CandidateController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCandidate(@PathVariable("id") UUID id) {
+    public ResponseEntity<HttpStatus> deleteCandidate(@PathVariable("id") String id) {
         try {
             this.candidateService.deleteCandidate(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

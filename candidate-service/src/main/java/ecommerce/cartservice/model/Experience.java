@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Experience {
-
     @JsonProperty
     private String title;
     @JsonProperty

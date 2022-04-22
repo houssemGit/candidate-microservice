@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class CandidatureServiceImpl implements CandidatureService {
     }
 
     @Override
-    public Optional<Candidature> getCandidatureById(String id) {
+    public Optional<Candidature> getCandidatureById(UUID id) {
         return candidatureRepository.findById(id);
     }
 
@@ -31,7 +32,7 @@ public class CandidatureServiceImpl implements CandidatureService {
     }
 
     @Override
-    public Candidature updateCandidature(Candidature candidatureDto, String id) throws CandidatureNotFoundException {
+    public Candidature updateCandidature(Candidature candidatureDto, UUID id) throws CandidatureNotFoundException {
         Optional<Candidature> candidate = this.candidatureRepository.findById(id);
         if (candidate.isPresent()) {
             return this.candidatureRepository.save(candidatureDto);
@@ -41,7 +42,7 @@ public class CandidatureServiceImpl implements CandidatureService {
     }
 
     @Override
-    public void deleteCandidature(String id) {
+    public void deleteCandidature(UUID id) {
         candidatureRepository.deleteById(id);
     }
 }

@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Education {
 
+public class Education {
     @JsonProperty
     private String name;
     @JsonProperty

@@ -12,11 +12,11 @@ import java.util.UUID;
 public interface CandidatureService {
      public List<Candidature> getAllCandidatures();
 
-     public Optional<Candidature> getCandidatureById(String id);
+     public Optional<Candidature> getCandidatureById(UUID id);
 
      public Candidature createCandidature(Candidature candidature);
 
-     public Candidature updateCandidature(Candidature candidatureDto, String id) throws CandidatureNotFoundException;
+     public Candidature updateCandidature(Candidature candidatureDto, UUID id) throws CandidatureNotFoundException;
 
-     public void deleteCandidature(String id);
+     public void deleteCandidature(UUID id);
 }

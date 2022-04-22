@@ -22,7 +22,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public Optional<Candidate> getCandidateById(UUID id) {
+    public Optional<Candidate> getCandidateById(String id) {
         return candidateRepository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public Candidate updateCandidate(Candidate candidateDto, UUID id) throws CandidateNotFoundException {
+    public Candidate updateCandidate(Candidate candidateDto, String id) throws CandidateNotFoundException {
         Optional<Candidate> candidate = this.candidateRepository.findById(id);
         if (candidate.isPresent()) {
             return this.candidateRepository.save(candidateDto);
@@ -42,7 +42,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public void deleteCandidate(UUID id) {
+    public void deleteCandidate(String id) {
         candidateRepository.deleteById(id);
     }
 }

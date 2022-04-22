@@ -11,8 +11,8 @@ import java.util.UUID;
 @Service
 public interface CandidateService {
      List<Candidate> getAllCandidates();
-     Optional<Candidate> getCandidateById(UUID id);
+     Optional<Candidate> getCandidateById(String id);
      Candidate createCandidate(Candidate candidate);
-     Candidate updateCandidate(Candidate candidate, UUID id) throws CandidateNotFoundException;
-     void deleteCandidate(UUID id);
+     Candidate updateCandidate(Candidate candidate, String id) throws CandidateNotFoundException;
+     void deleteCandidate(String id);
 }

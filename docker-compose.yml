@@ -12,6 +12,20 @@ services:
     image: "candidate-service"
     depends_on:
       - Eureka
+      - Mongo
+
+
+  Candidature:
+    container_name: candidature-service
+    build: ./candidature-service
+    ports:
+      - "8084:8084"
+    hostname: candidate
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    image: "candidature-service"
+    depends_on:
+      - Eureka
 
   Evaluation:
     container_name: evaluation-service
@@ -27,15 +41,16 @@ services:
 
   Auth:
     container_name: auth-service
-    build: ./auth-service
+    build: ./authentification-service
     ports:
       - "8081:8081"
-    hostname: auth
+    hostname: authentification
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     image: "auth-service"
     depends_on:
       - Eureka
+      - mysqldb
 
   Gateway:
     container_name: api-gateway
@@ -81,3 +96,13 @@ services:
     hostname: Mongo
     depends_on:
       - "Eureka"
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+    ports:
+      - "3306:3306"
+
