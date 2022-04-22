@@ -24,12 +24,13 @@ class condidateController {
         }
 
         const created_data = await cv.create({raw_data:candidate_data,path:req.file.path,fileName:req.file.filename})
-        candidate_data._id = created_data._id
+        
         try{
-        await axios.post("http://localhost:8054/candidates",candidate_data)
+        await axios.post("http://192.168.1.9:8083/candidates/",candidate_data)
         }catch(err){
             console.log(err)
-        }            
+        }
+        candidate_data._id = created_data._id       
         return res.json({status:"done",candidate_data})
     }
 
