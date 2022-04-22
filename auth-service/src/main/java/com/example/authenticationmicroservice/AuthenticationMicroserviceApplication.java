@@ -37,11 +37,10 @@ public class AuthenticationMicroserviceApplication {
 
 			// init users list
 			userService.saveUser( User.builder().email("fakhri@gmail.com").password("fakhri123").username("fakhri").roles(new  ArrayList<>()).build()) ;
-			userService.saveUser( User.builder().email("jhon@gmail.com").password("jhon123").username("Jhon").roles(new  ArrayList<>()).build()) ;
-			userService.saveUser( User.builder().email("sarah@gmail.com").password("sarah123").username("sarah").roles(new  ArrayList<>()).build()) ;
+			userService.saveUser( User.builder().email("houssem@gmail.com").password("houssem123").username("houssem").roles(new  ArrayList<>()).build()) ;
 
 
-			//init role / users
+//			//init role / users
 //			userService.addRoleToUser("fakhri" , "ADMIN" );
 //			userService.addRoleToUser("sarah" , "USER" );
 //			userService.addRoleToUser("Jhon" , "USER" );
