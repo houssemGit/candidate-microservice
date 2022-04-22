@@ -11,7 +11,6 @@ spring:
           uri: lb://candidate-service
           predicates:
             - Path=/candidates/**
-<<<<<<< HEAD
         - id : candidature-service
           uri: lb://candidature-service
           predicates:
@@ -20,10 +19,7 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/v1/**
-        - id : evaluation-service
-=======
         - id: evaluation-service
->>>>>>> 9b7392b239e7acd044c423487c99dc729f64a60b
           uri: lb://evaluation-service
           predicates:
             - Path=/evaluation/**
