@@ -32,19 +32,19 @@ public class AuthenticationMicroserviceApplication {
 	CommandLineRunner run(RoleService roleService , UserService userService){
 		return args -> {
 			// init roles list
-			roleService.saveRole(new Role( null,"ADMIN"));
-			roleService.saveRole(new Role( null,"USER"));
+			roleService.saveRole(Role.builder().name("ADMIN").build());
+			roleService.saveRole(Role.builder().name("USER").build());
 
 			// init users list
-			userService.saveUser(new User(null ,"fakhri@gmail.com","fakhri123","fakhri" , new  ArrayList<>())) ;
-			userService.saveUser(new User(null ,"jhon@gmail.com","jhon123","Jhon" , new  ArrayList<>())) ;
-			userService.saveUser(new User(null ,"sarah@gmail.com","sarah123","sarah" , new  ArrayList<>())) ;
+			userService.saveUser( User.builder().email("fakhri@gmail.com").password("fakhri123").username("fakhri").roles(new  ArrayList<>()).build()) ;
+			userService.saveUser( User.builder().email("jhon@gmail.com").password("jhon123").username("Jhon").roles(new  ArrayList<>()).build()) ;
+			userService.saveUser( User.builder().email("sarah@gmail.com").password("sarah123").username("sarah").roles(new  ArrayList<>()).build()) ;
 
 
 			//init role / users
-			userService.addRoleToUser("fakhri" , "ADMIN" );
-			userService.addRoleToUser("sarah" , "USER" );
-			userService.addRoleToUser("Jhon" , "USER" );
+//			userService.addRoleToUser("fakhri" , "ADMIN" );
+//			userService.addRoleToUser("sarah" , "USER" );
+//			userService.addRoleToUser("Jhon" , "USER" );
 		} ;
 	}
 
