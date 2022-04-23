@@ -35,9 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+        CustomAuthFilter customAuthFilter =  new  CustomAuthFilter(authenticationManagerBean());
+        customAuthFilter.setFilterProcessesUrl("/v1/login");
         http.authorizeRequests().antMatchers("/swagger-ui.html/**").permitAll();
-        http.authorizeRequests().antMatchers("/v1/login").permitAll();
+        http.authorizeRequests().antMatchers("/v1/login/**").permitAll();
         http.authorizeRequests().antMatchers("/swagger-resources/**").permitAll();
         http.authorizeRequests().antMatchers("/v2/api-docs/**").permitAll();
         http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().anyRequest().authenticated();
-        http.addFilter(new CustomAuthFilter(authenticationManagerBean()));
+        http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthorisationFilter() , UsernamePasswordAuthenticationFilter.class);
     }
 
