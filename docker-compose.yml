@@ -61,7 +61,7 @@ services:
       image: "offre-service"
       depends_on:
         - Eureka
-    
+
     Auth:
       container_name: auth-service
       build: ./auth-service
@@ -73,7 +73,7 @@ services:
       image: "auth-service"
       depends_on:
         - Eureka
-    
+
     Gateway:
       container_name: api-gateway
       build: ./api-gateway
@@ -115,6 +115,6 @@ services:
         image: "mongo:5-focal"
         ports:
           - "27017:27017"
-        hostname: Mongo
+        hostname: mongodb
         depends_on:
           - "Eureka"

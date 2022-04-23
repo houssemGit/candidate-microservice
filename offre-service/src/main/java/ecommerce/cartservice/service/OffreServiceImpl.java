@@ -38,6 +38,7 @@ public class OffreServiceImpl implements OffreService {
     public Offre updateOffre(Offre offreDto, UUID id) throws OffreNotFoundException {
         Optional<Offre> offre = this.offreRepository.findById(id);
         if (offre.isPresent()) {
+            offreDto.setId(id);
             return this.offreRepository.save(offreDto);
         } else {
             throw new OffreNotFoundException(id);
