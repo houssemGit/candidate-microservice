@@ -39,6 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Employee candidateDto, UUID id) throws EmployeeNotFoundException {
         Optional<Employee> candidate = this.employeeRepository.findById(id);
         if (candidate.isPresent()) {
+            candidateDto.setId(id);
             return this.employeeRepository.save(candidateDto);
         } else {
             throw new EmployeeNotFoundException(id);

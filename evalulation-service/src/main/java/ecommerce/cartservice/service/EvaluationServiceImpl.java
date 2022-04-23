@@ -38,6 +38,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     public Evaluation updateEvaluation(Evaluation evaluationDto, UUID id) throws EvaluationNotFoundException {
         Optional<Evaluation> evaluation = this.evaluationRepository.findById(id);
         if (evaluation.isPresent()) {
+            evaluationDto.setId(id);
             return this.evaluationRepository.save(evaluationDto);
         } else {
             throw new EvaluationNotFoundException(id);
