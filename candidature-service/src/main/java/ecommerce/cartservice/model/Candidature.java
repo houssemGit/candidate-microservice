@@ -1,6 +1,7 @@
 package ecommerce.cartservice.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Candidature {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
