@@ -1,0 +1,34 @@
+ # docker-compose.yaml
+version: "2.3"
+services:
+    Jenkins:
+      container_name: Jenkins
+      image: "jenkins/jenkins"
+      ports:
+        - "8080:8080"
+      volumes:
+        - "./jenkins:/var/jenkins_home"
+    Nexus:
+      container_name: Nexus
+      image: "sonatype/nexus3"
+      ports:
+          - "8081:8081"
+      volumes:
+          - "./nexus:/nexus-data"
+    Sonar:
+      container_name: Sonar
+      image: "sonarqube:7.7-community"
+      ports:
+          - "9000:9000"
+      volumes:
+        - "extensions:/opt/sonarqube/extensions"
+        - "logs:/opt/sonarqube/logs"
+        - "data:/opt/sonarqube/data"
+
+volumes:
+  data:
+  logs:
+  extensions:
+  pg_data:
+
+
