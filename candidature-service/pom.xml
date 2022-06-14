@@ -14,7 +14,7 @@
 	<name>candidature-service</name>
 	<description>candidature microservice</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 		<sonar.coverage.jacoco.xmlReportPaths>../app-it/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 	<dependencies>
