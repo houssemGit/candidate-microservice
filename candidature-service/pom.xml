@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>8</java.version>
 		<sonar.coverage.jacoco.xmlReportPaths>../app-it/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.coverage.exclusions>**/Candidature.java,**/CandidatureDTO.java</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
