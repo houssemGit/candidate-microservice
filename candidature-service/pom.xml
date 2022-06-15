@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ecommerce.cartservice</groupId>
 	<artifactId>candidature-service</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>candidature-service</name>
 	<description>candidature microservice</description>
 	<properties>
