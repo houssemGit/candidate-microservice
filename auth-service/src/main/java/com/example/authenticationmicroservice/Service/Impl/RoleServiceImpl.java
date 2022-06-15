@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role saveRole(Role role) {
-        log.info("saving rule   : {} " , role.getName());
+        log.info("saving role   : {} " , role.getName());
         return roleRepository.save( role );
     }
 }

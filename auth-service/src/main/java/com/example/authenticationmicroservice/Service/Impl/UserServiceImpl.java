@@ -30,10 +30,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     final private PasswordEncoder passwordEncoder;
 
 
+
+
+
     @Override
     public User saveUser(User user) {
         log.info("saving user  : {} ", user.getUsername());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -74,5 +77,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                     .User(user.get().getUsername(), user.get().getPassword(), authoroties);
         }
 
+    }
+    @Override
+    public void delete(Long id ){
+          this.userRepository.deleteById(id);
     }
 }

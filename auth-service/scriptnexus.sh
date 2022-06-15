@@ -1,0 +1,1 @@
+mvn clean package-Dmaven.test.skip=true deploy:deploy-file -DgroupId=com.example-DartifactId=authentication-microservice-Dversion=0.0.1-SNAPSHOT-DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymetRepo-Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/authentication-microservice-0.0.1-SNAPSHOT.jar
