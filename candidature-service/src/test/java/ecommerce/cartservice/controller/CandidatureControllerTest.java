@@ -16,10 +16,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -40,7 +37,7 @@ class CandidatureControllerTest {
     void testGetAllCandidature() throws Exception {
         // Setup
         // Configure CandidatureService.getAllCandidatures(...).
-        final List<Candidature> candidatures = List.of(new Candidature(UUID.fromString("e3bbb02f-5561-4c85-87da-5ba9037658c0"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
+        final List<Candidature> candidatures = Arrays.asList(new Candidature(UUID.fromString("e3bbb02f-5561-4c85-87da-5ba9037658c0"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
         when(mockCandidatureService.getAllCandidatures()).thenReturn(candidatures);
 
         // Run the test

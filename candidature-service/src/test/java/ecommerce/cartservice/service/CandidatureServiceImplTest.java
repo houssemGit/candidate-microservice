@@ -13,10 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -41,10 +38,10 @@ class CandidatureServiceImplTest {
     @Test
     void testGetAllCandidatures() {
         // Setup
-        final List<Candidature> expectedResult = List.of(new Candidature(UUID.fromString("d6ad056c-13fc-45b3-ba89-ba39e1792772"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
+        final List<Candidature> expectedResult = Arrays.asList(new Candidature(UUID.fromString("d6ad056c-13fc-45b3-ba89-ba39e1792772"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
 
         // Configure CandidatureRepository.findAll(...).
-        final List<Candidature> candidatures = List.of(new Candidature(UUID.fromString("d6ad056c-13fc-45b3-ba89-ba39e1792772"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
+        final List<Candidature> candidatures = Arrays.asList(new Candidature(UUID.fromString("d6ad056c-13fc-45b3-ba89-ba39e1792772"), "candidateId", "offreId", "evaluationId", Status.ACCEPTED, "creationDate"));
         when(mockCandidatureRepository.findAll()).thenReturn(candidatures);
 
         // Run the test
