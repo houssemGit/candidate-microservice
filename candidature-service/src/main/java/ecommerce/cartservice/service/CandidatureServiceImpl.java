@@ -2,6 +2,7 @@ package ecommerce.cartservice.service;
 
 import ecommerce.cartservice.exception.CandidatureNotFoundException;
 import ecommerce.cartservice.model.Candidature;
+import ecommerce.cartservice.model.CandidatureDTO;
 import ecommerce.cartservice.repository.CandidatureRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,15 +28,23 @@ public class CandidatureServiceImpl implements CandidatureService {
     }
 
     @Override
-    public Candidature createCandidature(Candidature candidature) {
-        return candidatureRepository.save(candidature);
+    public Candidature createCandidature(CandidatureDTO candidature) {
+        Candidature candidate = Candidature.builder().creationDate(candidature.getCreationDate())
+                .offreId(candidature.getOffreId())
+                .candidateId(candidature.getCandidateId())
+                .status(candidature.getStatus()).evaluationId(candidature.getEvaluationId()).build();
+        return candidatureRepository.save(candidate);
     }
 
     @Override
-    public Candidature updateCandidature(Candidature candidatureDto, UUID id) throws CandidatureNotFoundException {
+    public Candidature updateCandidature(CandidatureDTO candidatureDTO, UUID id) throws CandidatureNotFoundException {
+        Candidature candidateUpdated = Candidature.builder().creationDate(candidatureDTO.getCreationDate())
+                .offreId(candidatureDTO.getOffreId())
+                .candidateId(candidatureDTO.getCandidateId())
+                .status(candidatureDTO.getStatus()).evaluationId(candidatureDTO.getEvaluationId()).build();
         Optional<Candidature> candidate = this.candidatureRepository.findById(id);
         if (candidate.isPresent()) {
-            return this.candidatureRepository.save(candidatureDto);
+            return this.candidatureRepository.save(candidateUpdated);
         } else {
             throw new CandidatureNotFoundException(id);
         }

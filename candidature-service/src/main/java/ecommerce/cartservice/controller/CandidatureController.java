@@ -2,6 +2,7 @@ package ecommerce.cartservice.controller;
 
 import ecommerce.cartservice.exception.CandidatureNotFoundException;
 import ecommerce.cartservice.model.Candidature;
+import ecommerce.cartservice.model.CandidatureDTO;
 import ecommerce.cartservice.service.CandidatureService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
@@ -42,14 +43,14 @@ public class CandidatureController {
     }
 
     @PostMapping
-    public ResponseEntity<Candidature> createCandidature(@RequestBody Candidature candidatureDto) {
+    public ResponseEntity<Candidature> createCandidature(@RequestBody CandidatureDTO candidatureDto) {
         Candidature candidature = this.candidatureService.createCandidature(candidatureDto);
         return new ResponseEntity<>(candidature, HttpStatus.CREATED);
 
     }
 
     @PutMapping(value ="/{id}")
-    public ResponseEntity<Candidature> updateCandidature(@PathVariable("id") UUID id, @RequestBody Candidature candidatureDto) {
+    public ResponseEntity<Candidature> updateCandidature(@PathVariable("id") UUID id, @RequestBody CandidatureDTO candidatureDto) {
         try {
             return new ResponseEntity<>(this.candidatureService.updateCandidature(candidatureDto, id), HttpStatus.OK);
         }catch (CandidatureNotFoundException e){
